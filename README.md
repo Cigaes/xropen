@@ -46,6 +46,14 @@ see "${2:+$2:}$1" && rm "$1" || xmessage "Could not open $1"
 It uses the `see` command from Debian's `mime-support` package. `$1` is the
 name of the temp file, `$2` is the MIME type if given.
 
+`xropen` can be used from mail user agents with lines in the `~/.mailcap`
+file (using the `$NO_REMOTE_SEE` variable to inhibit it):
+
+```
+application/*; xropen -t %t %s; test=test -n "$DISPLAY" -a -z "$NO_REMOTE_SEE"
+image/*; xropen -t %t %s; test=test -n "$DISPLAY" -a -z "$NO_REMOTE_SEE"
+```
+
 Bugs
 ----
 
